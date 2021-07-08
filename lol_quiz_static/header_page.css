@@ -1,0 +1,76 @@
+
+h1,h2,h3,h4,h5,h6,p,label,.btn,a{
+	font-family:"Open Sans", sans-serif;
+  color: #333;
+}
+
+/* NavBar */
+
+#nav-bloc {
+  margin-top: 30px;
+}
+
+.navbar{
+	margin-bottom: 0;
+}
+.navbar-brand{
+	font-size: 25px;
+	font-weight: bold;
+	font-family: "Open Sans", Helvetica, Arial, sans-serif;
+	font-weight: 600;
+}
+.navbar-brand img{
+	width: auto;
+	max-height: 40px;
+	margin: -12px 5px 0 0;
+}
+.navbar-brand{
+	padding: 15px 15px;
+}
+.navbar .nav{
+	padding-top: 2px;
+	margin-right: -16px;
+	float:right;
+}
+.nav > li{
+	float: left;
+	margin-top: 4px;
+	font-size: 16px;
+}
+.nav > li a:hover{
+	background:transparent;
+}
+.navbar-toggle{
+	margin: 12px;
+	border: 0px;
+}
+.navbar-toggle:hover{
+	background:transparent!important;
+}
+.navbar-toggle .icon-bar{
+	background-color: rgba(0,0,0,.5);
+	width: 26px;
+}
+.navbar-collapse.in {
+overflow-y: visible;
+float: left;
+width: 100%;
+}
+.navbar-1 {
+  float: right;
+}
+.site-navigation:first-child {
+  float: left;
+}
+.site-navigation:nth-child(2) {
+  float: right;
+}
+.site-navigation:nth-child(2) a {
+  color: #ccc;
+  font-size: 85%;
+  padding-right: 0px;
+}
+
+.site-navigation .nav > .active{
+  color: #333;
+}

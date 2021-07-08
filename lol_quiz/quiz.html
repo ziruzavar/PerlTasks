@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</head>
+<div class="bloc l-bloc" id="nav-bloc">
+	<div class="container">
+		<nav class="navbar row">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/cgi-bin/lol_quiz/landing.pl">League Of Legends  Quiz</a>
+			</div>
+            <a class="btn-primary btn"  action="/landing.pl" href="/cgi-bin/lol_quiz/landing.pl">Home</a>
+		</nav>
+	</div>
+</div>   
+<body onload="script()">
+    <div class="container mt-5">
+    <div class="d-flex justify-content-center row">
+        <div class="col-md-10 col-lg-10">
+            <div class="border">
+                <div class="question bg-white p-3 border-bottom">
+                    <div class="d-flex flex-row justify-content-between align-items-center mcq">
+
+                        <h4>League of Legends Quiz</h4>
+                        <span id="time">Time left: 20 seconds</span>
+                        <span id="current">(1 of 2)</span>
+                    </div>
+                </div>
+                <div class="question bg-white p-3 border-bottom " onmousedown='return false;'>
+                    <div class="d-flex flex-row align-items-center question-title" >
+                        <h3 class="text-danger">Q.</h3>
+                        <h5 id="name" class="mt-1 ml-2"></h5>
+                    </div>
+                        <input type="radio" id='first' name="question">
+                        <label for="first"></label><br>
+                        <input type="radio" id='second' name="question">
+                        <label for="second"></label><br>
+                        <input type="radio" id='third' name="question">
+                        <label for="third"></label><br>
+                        <input type="radio" id='forth' name="question">
+                        <label for="forth"></label><br>
+                </div>
+                <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
+                    <button id='next' class="btn btn-primary border-success align-items-center" type="button">Next
+                        <i class="fa fa-angle-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/lol_quiz_static/next.js"></script>
+</html>
