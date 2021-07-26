@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Table</title>
+<link rel="stylesheet" href="/template/task.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="icon" href="https://cdn.iconscout.com/icon/premium/png-512-thumb/database-table-781612.png">
+</head>
+<body>
+<a class="btn btn-primary" href=form.cgi>Enter new values</a>
+<table name="teams" border="2" width="400" align="center" class="table table-bordered">
+<thead>
+    <tr class="thead-dark">
+        <th>PK</th>
+        <th>Name</th>
+        <th>Num</th>
+        <th>Team</th>
+    </tr>
+</thead>
+<tbody>
+<TMPL_LOOP NAME=ROWS>
+   <TMPL_IF NAME="__odd__">
+   <tr class="table-danger">
+      <td><TMPL_VAR NAME="COL_PK"></td>
+      <td><TMPL_VAR NAME="COL_NAME"></td>
+      <td><TMPL_VAR NAME="COL_NUM"></td>
+      <td><TMPL_VAR NAME="COL_TEAM"></td>
+   </tr>
+   <TMPL_ELSE>
+    <tr class="table-primary">
+      <td><TMPL_VAR NAME="COL_PK"></td>
+      <td><TMPL_VAR NAME="COL_NAME"></td>
+      <td><TMPL_VAR NAME="COL_NUM"></td>
+      <td><TMPL_VAR NAME="COL_TEAM"></td>
+   </tr>
+   </TMPL_IF>
+</TMPL_LOOP>
+</tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Form</title>
+<link rel="stylesheet" href="/template/form.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="icon" href="https://static.thenounproject.com/png/25603-200.png">
+</head>
+<body>
+   <form action="task.cgi" method="POST">
+   	<span>
+       	    <label for="start_row">Start row</label>
+	    <input value="<TMPL_VAR NAME="start_row">" placeholder="0-399999"type="number" name="start_row"  max="399999" min="0"aria-describedby="startAndEnd">
+<small id="startAndEnd" class="form-text text-muted">
+  The difference between the start row and the end row must be in range 0-10000, also the end row should be bigger than the start row</small>
+	</span>
+	<span>
+	    <label for="end_row">End row</label>
+	    <input value="<TMPL_VAR NAME=end_row>"  placeholder="1-400000" type="number" name="end_row" max="400000" min="1"/>
+	</span>
+	<span>
+	    <label for="teams">Choose a team:</label>
+	    <select name="teams">
+	        <option value="A-team">A-team</option>
+	        <option value="B-team">B-team</option>
+	        <option value="C-team">C-team</option>
+	        <option value="D-team">D-team</option>
+	        <option value="E-team">E-team</option>
+	    </select>
+	</span>
+	<span>
+	    <label for="order">Order descending</label>
+	    <input type="checkbox" name="order" value="DESC">
+	</span>
+        <input style="display:block" class="btn btn-success" type="submit" value="search"/>
+    </form>
+</body>
+</html>
+

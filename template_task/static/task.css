@@ -1,0 +1,12 @@
+a {
+   background-color: green;
+   border: 2px solid #ccc;
+
+}
+table.table-bordered{
+    border:3px solid black;
+    margin-top:20px;
+  }
+table.table-bordered > tbody > tr > td{
+    border:3px solid black;
+}
