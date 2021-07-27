@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>Table</title>
+<link rel="stylesheet" href="/template/task.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="icon" href="https://cdn.iconscout.com/icon/premium/png-512-thumb/database-table-781612.png">
+<script type="module" src="/stock_static/extract.js"></script>
+</head>
+<body>
+<label for="montly">Montly investment in $
+<input id="montly" type="number">
+<label for="months">How many months will you invest:
+<input id="months" type="number" placeholder="max 60 months">
+</label>
+<button class="btn btn-primary">Calculate total earning</button>
+<table name="teams" border="2" width="400" align="center" class="table table-bordered">
+<thead>
+    <tr class="thead-dark">
+        <th>Regular value</th>
+    </tr>
+</thead>
+<tbody>
+<TMPL_LOOP NAME=ROWS>
+    <tr class="table-primary">
+      <td><TMPL_VAR NAME="num"></td>
+   </tr>
+</TMPL_LOOP>
+</tbody>
+</table>
+</body>
+</html>
