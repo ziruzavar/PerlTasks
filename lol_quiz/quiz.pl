@@ -8,7 +8,7 @@ use CGI;
 use JSON;
 
 my $q = new CGI;
-
+#
 use DBI;
 
 my $dsn = "DBI:MariaDB:database=lol;host=127.0.0.1;port=3306";
