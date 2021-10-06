@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>Cinema</title>
+</head>
+<body>
+<a href="/perl/forum/upload_to_cinema.pm">Upload a movie</a>
+<a href="/perl/forum/index.pm">Or return to the main page</a>
+<table name="images" border="2">
+<thead>
+    <tr>
+        <th>Username:</th>
+	<th>Status</th>
+	<th>Small movie</th>
+	<th>Large movie</th>
+    </tr>
+</thead>
+<tbody>
+<TMPL_LOOP NAME="ROWS">
+    <tr>
+    	<td><TMPL_VAR NAME="username"></td>
+    	<td><TMPL_VAR NAME="status"></td>
+		<td><video controls> 
+		<source type="video/mp4" src="/forum_static/small_movie/<TMPL_VAR NAME="small">"</td>
+		<td><video alt="No video" controls> 
+		<source type="video/mp4" src="/forum_static/large_movie/<TMPL_VAR NAME="large">"</td>
+	     </tr>
+	</TMPL_LOOP>
+</tbody>
+</body>
+</html>

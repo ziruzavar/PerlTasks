@@ -1,0 +1,8 @@
+<h1>Hello <TMPL_VAR NAME="username">!</h1>
+<form method="POST" action="/perl/forum/edit_profile.pm"  enctype="multipart/form-data">
+  <img src="/forum_static/user_pictures/<TMPL_VAR NAME="image_src">" alt="No image"></img>
+  <label for="file">Upload a profile picture</label>
+  <input type="file" name="img" id="file" accept="image/*">
+  <input type="submit" value="Edit">
+</form>
+<a href="/perl/forum/index.pm">Return to Home page</a>

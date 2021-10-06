@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>Galery</title>
+</head>
+<body>
+<a href="/perl/forum/upload_to_galery.pm">Upload a photo</a>
+<a href="/perl/forum/index.pm">Or return to the main page</a>
+<table name="images" border="2">
+<thead>
+    <tr>
+        <th>Username:</th>
+	<th>Upload date</th>
+	<th>Small image</th>
+	<th>Medium image</th>
+	<th>Large image</th>
+    </tr>
+</thead>
+<tbody>
+<TMPL_LOOP NAME="ROWS">
+    <tr>
+    	<td><TMPL_VAR NAME="username"></td>
+    	<td><TMPL_VAR NAME="date"></td>
+    	<td><img src="/forum_static/small/<TMPL_VAR NAME="small">"></img></td>
+	<td><img src="/forum_static/medium/<TMPL_VAR NAME="medium">"></img></td>
+  	<td><img src="/forum_static/large/<TMPL_VAR NAME="large">"></img></td>
+     </tr>
+</TMPL_LOOP>
+</tbody>
+</body>
+</html>

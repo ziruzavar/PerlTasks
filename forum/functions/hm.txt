@@ -1,0 +1,75 @@
+# You can use `Test::More` to write tests.
+# https://metacpan.org/pod/Test::More
+# use strict;
+# use warnings;
+# use Test::More;
+# `Test::Most` can be used to load commonly needed features.
+# See https://metacpan.org/pod/Test::Most
+use Test::Most;
+use List::Util qw/shuffle/; 
+
+# The name of the solution package is inferred from the code.
+use Solution;
+
+subtest "Fixed tests" => sub {
+  is(Solution::valid_ISBN10('1112223339'), 1);
+  is(Solution::valid_ISBN10('048665088X'), 1);
+  is(Solution::valid_ISBN10('1293000000'), 1);
+  is(Solution::valid_ISBN10('1234554321'), 1);
+  is(Solution::valid_ISBN10('1112223339'), 1);
+  is(Solution::valid_ISBN10('1234512345'), 0);
+  is(Solution::valid_ISBN10('1293'), 0);
+  is(Solution::valid_ISBN10('X123456788'), 0);
+  is(Solution::valid_ISBN10('ABCDEFGHIJ'), 0);
+  is(Solution::valid_ISBN10('XXXXXXXXXX'), 0);
+};
+
+subtest "Random tests" => sub {
+    my $DIGZ = "0123456789X";
+    our @arr_DIGZ = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'X');
+    
+    sub sol_checker{
+        my ($s) = @_;
+        my @arr_s = split('', $s);
+        my $sum = 0;
+        if ($s =~ /^\d{9}[\dX]$/){
+            for( my $i=0; $i<length($s); $i++){
+                if ($arr_s[$i] eq "X"){
+                    $sum += 10*10;
+                }else{
+                    $sum += $arr_s[$i] * ($i+1);
+                }
+            }
+            if ($sum % 11 == 0){
+                return 1;
+            }else{
+                return 0;
+            };
+        };
+        return 0;
+    };
+    
+    sub gen_isbn{
+        my $s = int(rand(10**9-10**8)) + 10**8;
+        $s.= $arr_DIGZ[int(rand(11))];
+    
+        my $mod = int(rand(3));
+        if ($mod == 0){
+            my $random = join '', shuffle split //, $s;
+        }elsif ($mod == 1){
+            my $ran = int(rand(8));
+            $s = substr($s, $ran)
+        }else{
+            $s.=$arr_DIGZ[int(rand(10))];
+        }
+        return $s
+    }
+    for( my $p=0; $p<100; $p++ ){
+        my $isbn = gen_isbn();
+        my $expected = sol_checker($isbn);
+        if (Solution::valid_ISBN10($isbn) != $expected){
+        }
+        is(Solution::valid_ISBN10($isbn), $expected);
+    };
+};
+done_testing();

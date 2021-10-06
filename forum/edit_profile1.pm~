@@ -1,0 +1,68 @@
+#!/usr/local/bin/perl
+
+use strict;
+use warnings;
+
+use CGI;
+use CGI::Session;
+use CGI::Session::Plugin::Redirect;
+use DBI;
+use Image::Size;
+use CGI::Carp qw(fatalsToBrowser set_message);
+
+$CGI::POST_MAX = 1024 * 5000;
+my $upload_dir = '/usr/local/www/apache24/data/forum_static/user_pictures/';
+
+our $q = new CGI;
+my $session = CGI::Session->new();
+
+my $cookie = $q->cookie(-name => $session->name,
+			-value => $session->id );
+
+my $username = $session->param("username");
+
+my $filename = $q->param('img');
+
+if ( !$filename ){
+	print $q->header('text/html');
+	print "<p>There was a problem uploading your photo (try a smaller file).</p>";
+	print '<a href="/perl/forum/profile.pm">Try again</a>';
+}else{
+	my $extension = substr($filename, -3);
+
+	$filename = $username .'.'. $extension;
+	
+	my $upload_filehandle = $q->upload("img");
+	
+	my ($width, $heigth) = imgsize($upload_filehandle);
+	
+	if ($width > 640 or $heigth > 480){
+		print $q->header('text/html');
+		print "<p>Maximum size is 640x480</p>";
+		print "<p>Current width: $width, heigth: $heigth</p>";
+		print '<a href="/perl/forum/profile.pm">Try again</a>';
+
+	}else{
+
+		open ( UPLOADFILE, ">$upload_dir/$filename" ) or die "$!";
+
+		binmode UPLOADFILE;
+
+		while ( <$upload_filehandle> )
+		{
+		print UPLOADFILE;
+		}
+		close UPLOADFILE;
+	
+		my $dsn = "DBI:MariaDB:database=forum;host=127.0.0.1;port=3306";
+		my $dbh = DBI->connect($dsn,'perl', 'password1')
+		 or die "Couldn't connect to database: " . DBI->errstr;
+
+		my $sth = $dbh->prepare_cached('UPDATE users SET image = ? WHERE username = ?');	
+		$sth->execute($filename ,$username);
+
+
+		print $session->redirect('http://localhost/perl/forum/profile.pm');
+	}
+}
+
